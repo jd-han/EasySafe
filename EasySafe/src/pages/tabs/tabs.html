@@ -1,0 +1,19 @@
+<ion-menu [content]="content">
+  <ion-content>
+    <ion-list>
+      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+
+
+
+<ion-tabs>
+  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="Camera" tabIcon="camera"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="History" tabIcon="book"></ion-tab>
+</ion-tabs>
