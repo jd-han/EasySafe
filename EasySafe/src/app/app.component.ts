@@ -21,9 +21,6 @@ export class MyApp {
   ) {
     this.initializeApp();
 
-    this.pages = [
-      { title: '공지사항', component: NoticePage }
-    ];
   }
 
   initializeApp() {
