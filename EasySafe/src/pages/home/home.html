@@ -8,5 +8,16 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar></ion-searchbar>
+  <div id="search-component">
+    <h4>chem Search</h4>
+    <!--<input #searchBox id="search-box" (keyup)="search(searchBox.value)"  />-->
+    <ion-searchbar (search)="search()" [(ngModel)]="searchQuery" hideCancelButton="true">
+    </ion-searchbar>
+    <div>
+      <div *ngFor="let chem of chems | async"
+           (click)="gotoDetail(chem)" class="search-result" >
+        {{chem.name}}
+      </div>
+    </div>
+  </div>
 </ion-content>

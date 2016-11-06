@@ -23,10 +23,8 @@ export class CameraPage {
     BarcodeScanner.scan().then((barcodeData) => {
       alert(barcodeData.text + "/n"+
       "Format : " + barcodeData.format);
-
     }, (err) => {
       console.log(err)
     });
-
   }
 }

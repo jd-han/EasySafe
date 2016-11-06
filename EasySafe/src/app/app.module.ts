@@ -6,6 +6,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import {CameraPage} from "../pages/camera/camera";
 import {HistoryPage} from "../pages/history/history";
 import {NoticePage} from "../pages/notice/notice";
+import {ChemService} from "../providers/chem-service";
+import {ChemSearchService} from "../providers/chem-search-service";
 
 @NgModule({
   declarations: [
@@ -28,6 +30,6 @@ import {NoticePage} from "../pages/notice/notice";
     HistoryPage,
     NoticePage
   ],
-  providers: []
+  providers: [ChemService, ChemSearchService]
 })
 export class AppModule {}
