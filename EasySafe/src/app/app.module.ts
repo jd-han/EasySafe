@@ -6,7 +6,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import {CameraPage} from "../pages/camera/camera";
 import {HistoryPage} from "../pages/history/history";
 import {NoticePage} from "../pages/notice/notice";
-import {ChemService} from "../providers/chem-service";
+import {SearchList} from "../pages/search-list/search-list";
+import {ChemDetail} from "../pages/chem-detail/chem-detail";
 import {ChemSearchService} from "../providers/chem-search-service";
 
 @NgModule({
@@ -16,7 +17,9 @@ import {ChemSearchService} from "../providers/chem-search-service";
     TabsPage,
     CameraPage,
     HistoryPage,
-    NoticePage
+    NoticePage,
+    SearchList,
+    ChemDetail
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -28,8 +31,10 @@ import {ChemSearchService} from "../providers/chem-search-service";
     TabsPage,
     CameraPage,
     HistoryPage,
-    NoticePage
+    NoticePage,
+    SearchList,
+    ChemDetail
   ],
-  providers: [ChemService, ChemSearchService]
+  providers: [ChemSearchService]
 })
 export class AppModule {}

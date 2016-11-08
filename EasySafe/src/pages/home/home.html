@@ -9,15 +9,35 @@
 
 <ion-content padding>
   <div id="search-component">
-    <h4>chem Search</h4>
-    <!--<input #searchBox id="search-box" (keyup)="search(searchBox.value)"  />-->
-    <ion-searchbar (search)="search()" [(ngModel)]="searchQuery" hideCancelButton="true">
-    </ion-searchbar>
-    <div>
-      <div *ngFor="let chem of chems | async"
-           (click)="gotoDetail(chem)" class="search-result" >
-        {{chem.name}}
+    <!--<ion-card id="logo">-->
+    <img src="assets/img/logo_ani.png" />
+    <!--</ion-card>-->
+    <ion-slides class="mainSlide" [options]="slideOptions">
+      <!-- 지금은 공지 이슈 전문가가 따로따로 도는데 아마 나중엔 셋 다 통합해서 슬라이드 한개만 돌려야 할듯. -->
+      <ion-slide *ngFor="let no of notice">
+        {{no}} <a href="#">더보기</a>
+      </ion-slide>
+      <ion-slide *ngFor="let is of issue">
+        {{is}}
+      </ion-slide>
+      <ion-slide *ngFor="let ex of experts">
+        {{ex}}
+      </ion-slide>
+    </ion-slides>
+
+    <input #searchBox id="search-box" (keydown.enter)="homeSearch($event, searchBox.value)" />
+    <button ion-button class="searchBtn" (click)="homeSearch($event, searchBox.value)">
+      <ion-icon md="md-search"></ion-icon>
+    </button>
+    <!--<ion-searchbar (search)="search()" [(ngModel)]="searchQuery" hideCancelButton="true">
+    </ion-searchbar>-->
+    <!--<a href="#" class="chemList" >-->
+    <!--<div *ngFor="let chem of chems | async"
+          class="search-result" (click)="gotoDetail(chem)">
+      <div class="result">
+        &nbsp;&nbsp;{{chem.japan}}
       </div>
-    </div>
+    </div>-->
+    <!--</a>-->
   </div>
 </ion-content>

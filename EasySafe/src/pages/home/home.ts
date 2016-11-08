@@ -1,49 +1,30 @@
-import {Component, OnInit} from '@angular/core';
-
+import {Component} from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {Observable, Subject} from "rxjs";
-import {Chem} from "../../app/chem";
-import {ChemSearchService} from "../../providers/chem-search-service";
+import {SearchList} from "../search-list/search-list";
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
 })
 export class HomePage {
-  chems: Observable<Chem[]>;
-  private searchTerms = new Subject<string>();
+
+  notice = ['공지사항', '공지사항2', '공지사항3'];
+  issue = ['이슈사건들', '또다른이슈', '전혀다른이슈'];
+  experts = ['이달의 전문가', '이제는전문가', '내일은전문가'];
+
+  slideOptions={
+    autoplay: 2000,
+    direction: 'vertical',
+    loop: true,
+    speed: 1000
+  };
 
   constructor(
     public navCtrl: NavController,
-    private chemSearchService: ChemSearchService
   ) {}
 
-  ngOnInit(){
-    this.chems = this.chemSearchService.chems;
-  }
-
-/*  ngOnInit(){
-    this.chems = this.searchTerms
-      .debounceTime(300)
-      .distinctUntilChanged()
-      .switchMap(term => term
-      ? this.chemSearchService.search(term) : Observable.of<Chem[]>([]))
-      .catch(error => {
-        console.log(error);
-        return Observable.of<Chem[]>([]);
-        }
-
-      );
-  }*/
-
-  search(term: string){
-    /*this.searchTerms.next(term);*/
-    this.chemSearchService.search(term);
-    console.log('search works!');
-  }
-
-  gotoDetail(chem: Chem){
-    let link = ['/detail', chem.name];
+  homeSearch(event, term:string){
+    this.navCtrl.push(SearchList, { name : term});
   }
 
 }

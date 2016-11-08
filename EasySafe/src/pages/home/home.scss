@@ -1,3 +1,57 @@
 page-home {
 
 }
+
+.mainSlide{
+  height: 100px;
+}
+
+ion-slide{
+  font-size: 100px;
+}
+
+#logo{
+  width: 50%; height: 25%;
+  margin: auto;
+}
+
+#search-component{
+  text-align: center;
+}
+
+#search-box{
+  width: 45%;
+}
+
+.searchBtn{
+  height: 30px;
+  top: -5px;
+}
+/*
+.chemList{
+  margin: auto;
+  width: 50%;
+  text-decoration: none;
+  color: black;
+
+}
+.result{
+
+}
+.result:hover{
+  background-color: skyblue;
+  border-radius: 5px;
+}
+.search-result{
+  width: 50%;
+  margin: auto;
+  font-size: 25px;
+  border-left: 1px solid #333;
+  border-right: 1px solid #333;
+  cursor: pointer;
+  text-align: left !important;
+}
+.search-result:last-of-type{
+  border-bottom: 1px solid #333;
+}
+*/

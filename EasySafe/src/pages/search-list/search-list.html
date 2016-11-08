@@ -14,5 +14,14 @@
 
 
 <ion-content padding>
+  <input #searchBox id="search-box" (keydown.enter)="searchChem(searchBox.value)"  />
+  <button ion-button class="searchBtn" (click)="searchChem(searchBox.value)">
+    <ion-icon md="md-search"></ion-icon>
+  </button>
+  <ion-list no-lines *ngIf="chems">
+    <ion-item *ngFor="let chem of chems" (click)="detail($event, chem.name)" class="search-result" >
+      {{chem.name}}
+    </ion-item>
+  </ion-list>
 
 </ion-content>

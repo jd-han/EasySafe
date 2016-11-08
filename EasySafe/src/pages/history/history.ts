@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
-import {Http} from "@angular/http";
+import {NavController} from 'ionic-angular';
 import 'rxjs/add/operator/map';
-import {ChemService} from "../../providers/chem-service";
 
 @Component({
   selector: 'page-history',
