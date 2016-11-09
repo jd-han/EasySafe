@@ -9,6 +9,8 @@ import {NoticePage} from "../pages/notice/notice";
 import {SearchList} from "../pages/search-list/search-list";
 import {ChemDetail} from "../pages/chem-detail/chem-detail";
 import {ChemSearchService} from "../providers/chem-search-service";
+import {AboutPage} from "../pages/about/about";
+import {ContactPage} from "../pages/contact/contact";
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import {ChemSearchService} from "../providers/chem-search-service";
     HistoryPage,
     NoticePage,
     SearchList,
-    ChemDetail
+    ChemDetail,
+    AboutPage,
+    ContactPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -33,7 +37,9 @@ import {ChemSearchService} from "../providers/chem-search-service";
     HistoryPage,
     NoticePage,
     SearchList,
-    ChemDetail
+    ChemDetail,
+    AboutPage,
+    ContactPage
   ],
   providers: [ChemSearchService]
 })
