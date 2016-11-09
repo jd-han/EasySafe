@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {Chem} from "../../app/chem";
 import {ChemSearchService} from "../../providers/chem-search-service";
+import {Chem} from "../../app/chem";
 
 @Component({
   selector: 'page-chem-detail',
@@ -10,6 +10,8 @@ import {ChemSearchService} from "../../providers/chem-search-service";
 
 export class ChemDetail{
   chem: Chem;
+  casUrl: string;
+  nameUrl: string;
 
   constructor(
     public navCtrl: NavController,
@@ -23,10 +25,12 @@ export class ChemDetail{
   }
   ngOnInit(){
     this.chemSearchService.chemDetail(this.navParams.get('name'))
-  .subscribe( data => {
-      this.chem =  data;
-      }, error => {console.log('chemDetail.init err' + error);
-      },
+      .subscribe( data => {
+          this.chem =  data;
+          this.casUrl = "http://www.chemnet.com/cas/supplier.cgi?terms=" + this.chem.cas + "&l=kr&exact=dict&f=plist&mark=&submit.x=0&submit.y=0";
+          this.nameUrl = "https://ko.wikipedia.org/wiki/" + this.chem.name;
+        }, error => {console.log('chemDetail.init err' + error);
+        },
         () => console.log('chemDetail Complete'))
   }
 }
