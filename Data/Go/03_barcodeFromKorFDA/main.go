@@ -18,7 +18,7 @@ endIdx		STRING(필수)	요청종료위치	정수입력
 url = "http://openapi.foodsafetykorea.go.kr/api/keyId/serviceId/dataType/startIdx/endIdx"
  */
 const(
-	keyId = "2414605d96c34b8e8cd8"
+	keyId = "keyid"
 	serviceId = "I2570" //유통바코드
 	dataType = "json"
 	url = "http://openapi.foodsafetykorea.go.kr/api/"
