@@ -8,7 +8,10 @@ import {HistoryPage} from "../pages/history/history";
 import {NoticePage} from "../pages/notice/notice";
 import {SearchList} from "../pages/search-list/search-list";
 import {ChemDetail} from "../pages/chem-detail/chem-detail";
+import {ProductDetail} from "../pages/product-detail/product-detail";
 import {ChemSearchService} from "../providers/chem-search-service";
+import {ProductSearchService} from "../providers/prod-search-service";
+import {CommonService} from "../providers/hideTab-service";
 import {AboutPage} from "../pages/about/about";
 import {ContactPage} from "../pages/contact/contact";
 
@@ -23,7 +26,8 @@ import {ContactPage} from "../pages/contact/contact";
     SearchList,
     ChemDetail,
     AboutPage,
-    ContactPage
+    ContactPage,
+    ProductDetail
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -39,8 +43,9 @@ import {ContactPage} from "../pages/contact/contact";
     SearchList,
     ChemDetail,
     AboutPage,
-    ContactPage
+    ContactPage,
+    ProductDetail
   ],
-  providers: [ChemSearchService]
+  providers: [ChemSearchService, CommonService, ProductSearchService]
 })
 export class AppModule {}

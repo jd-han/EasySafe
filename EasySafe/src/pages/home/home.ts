@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {SearchList} from "../search-list/search-list";
+import { CommonService } from '../../providers/hideTab-service';
 
 @Component({
   selector: 'page-home',
@@ -19,12 +20,16 @@ export class HomePage {
     speed: 1000
   };
 
-  constructor(
-    public navCtrl: NavController,
-  ) {}
+  constructor(public navCtrl: NavController, private commonService:CommonService) {
+
+  }
 
   homeSearch(event, term:string){
     this.navCtrl.push(SearchList, { name : term});
   }
 
+  hideTab(){
+    // 입력창에 터치했을때 키보드 화면이 뜨는 이벤트
+    this.commonService.callHideTab()
+  }
 }

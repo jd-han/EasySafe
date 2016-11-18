@@ -7,7 +7,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="container">
   <div id="search-component">
     <!--<ion-card id="logo">-->
     <img src="assets/img/logo_ani.png" />
@@ -25,9 +25,9 @@
       </ion-slide>
     </ion-slides>
 
-    <input #searchBox id="search-box" (keydown.enter)="homeSearch($event, searchBox.value)" />
+    <input #searchBox id="search-box" (focus)="hideTab()" (blur)="hideTab()" (keydown.enter)="homeSearch($event, searchBox.value)" />
     <button ion-button class="searchBtn" (click)="homeSearch($event, searchBox.value)">
-      <ion-icon md="md-search"></ion-icon>
+      <ion-icon ios="ios-search" md="md-search"></ion-icon>
     </button>
     <!--<ion-searchbar (search)="search()" [(ngModel)]="searchQuery" hideCancelButton="true">
     </ion-searchbar>-->
