@@ -11,24 +11,58 @@
 </ion-header>
 
 <ion-content>
-  <div style="margin-left: 1em; margin-top: 1em; width: 100%;">
-    <img style="vertical-align: middle;" src="assets/img/{{pros.totalSafety}}">
-      {{pros.name}}
-    <div style="position: absolute; display: inline-block; right: 1em;">
-      <img style="vertical-align: middle; visibility: hidden;" src="assets/img/{{pros.totalSafety}}">
-      {{pros.boycott}}
-    </div>
-  </div>
-  <h2>&nbsp;제품에 들어간 성분</h2>
-  <ion-list>
-    <ion-item *ngFor="let chem of chems">
-      <div style="display: inline-block;">
-        {{chem.KOR}}<br />
-        {{chem.ENG}}
-      </div>
-      <div style="display: inline-block; position: absolute; right: 1em;">
-        <img style="vertical-align: middle;" src="assets/img/{{chem.safety}}">
-      </div>
+  <h2>chem</h2>
+  <ion-list *ngIf="chem">
+    <ion-item>
+      {{chem.name}}<br>
     </ion-item>
   </ion-list>
+
+  <h2>chemname2</h2>
+  <ion-list *ngIf="chemnames2">
+    <ion-item *ngFor="let comp of chemnames2">
+      {{comp}}<br>
+    </ion-item>
+  </ion-list>
+
+
+  <h2>chems</h2>
+  <ion-list *ngIf="chems">
+    <ion-item *ngFor="let jojo of chems" >
+      {{jojo.name}}<br>
+
+    </ion-item>
+  </ion-list>
+
+  <h2>chemnames</h2>
+  <ion-list *ngIf="chemnames">
+    <ion-item *ngFor="let chem of chemnames" >
+      {{chem}}<br>
+
+    </ion-item>
+  </ion-list>
+
 </ion-content>
+
+  <!--<ion-content>
+    <div style="margin-left: 1em; margin-top: 1em; width: 100%;">
+      <img style="vertical-align: middle;" src="assets/img/{{pros.totalSafety}}">
+        {{pros.name}}
+      <div style="position: absolute; display: inline-block; right: 1em;">
+        <img style="vertical-align: middle; visibility: hidden;" src="assets/img/{{pros.totalSafety}}">
+        {{pros.boycott}}
+      </div>
+    </div>
+    <h2>&nbsp;제품에 들어간 성분</h2>
+    <ion-list>
+      <ion-item *ngFor="let chem of chems">
+        <div style="display: inline-block;">
+          {{chem.KOR}}<br />
+          {{chem.ENG}}
+        </div>
+        <div style="display: inline-block; position: absolute; right: 1em;">
+          <img style="vertical-align: middle;" src="assets/img/{{chem.safety}}">
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>-->

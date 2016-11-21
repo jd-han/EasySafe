@@ -4,6 +4,6 @@
 export class Product {
   name: string;
   ups: string;
-  component: string;
+  components: string;
   producer: string;
 }

@@ -40,11 +40,6 @@ export class SearchList {
     this.chemSearchService.searchChem(term)
       .subscribe(data =>{
           this.chems = data;
-        console.log('data');
-        console.dir(data);
-
-        console.log('chems');
-        console.dir(this.chems);
         }, error => {
           console.log('searchList search error' + error);
         },

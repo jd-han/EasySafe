@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {ProductDetail} from "../product-detail/product-detail";
 
 /*
   Generated class for the About page.
@@ -13,10 +14,16 @@ import { NavController } from 'ionic-angular';
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController) {}
+  constructor(
+    public navCtrl: NavController,
+  ) {}
 
   ionViewDidLoad() {
     console.log('Hello About Page');
+  }
+
+  productTest(event, term:string){
+    this.navCtrl.push(ProductDetail, { upc : term});
   }
 
 }

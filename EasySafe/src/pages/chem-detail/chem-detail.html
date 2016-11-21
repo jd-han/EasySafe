@@ -133,5 +133,11 @@
 
     <!--</ion-list>-->
   </div>
+  <h3>productList</h3>
+  <ion-list *ngIf="productList">
+    <ion-item *ngFor="let product of productList ">
+      {{product.name}}
+    </ion-item>
+  </ion-list>
 </ion-content>
 

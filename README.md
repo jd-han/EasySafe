@@ -16,3 +16,5 @@ OS:<br>
 Node Version: v6.9.1<br>
 
 ---
+
+It use two camera plugins. edit Project/platforms/ AndroidManifest.xml and android.json. remove duplicated <uses-feature> and <uses-permission>

@@ -11,7 +11,8 @@ export class Chem {
   codex: string;
   japan: string;
   china: string;
-  aus: string;
+  australia: string;
+  avg: string;
   viewcnt: number;
   replycnt: number;
 }

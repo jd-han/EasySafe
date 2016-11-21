@@ -71,10 +71,10 @@ html,body {
 	}
 }
 .container {
-  background-color: #263645;
+  background-color: #becfff;
   /*../assets/img/network.svg*/
   /*http://timteeling.com/dev/img/network.svg*/
-  background-image: url('http://timteeling.com/dev/img/network.svg'), radial-gradient(200% 200px at center, #ff8300 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0));
+  background-image: url('../assets/img/network.svg'), radial-gradient(200% 200px at center, #abff58 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0));
   background-size: 125%, 10% 50%;
   background-position: 0 60%, 0 50%;
   animation: move 3s linear infinite;
