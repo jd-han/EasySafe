@@ -10,9 +10,6 @@ import {SearchList} from "../pages/search-list/search-list";
 import {ChemDetail} from "../pages/chem-detail/chem-detail";
 import {ProductDetail} from "../pages/product-detail/product-detail";
 import {ChemSearchService} from "../providers/chem-search-service";
-import {CommonService} from "../providers/hideTab-service";
-import {AboutPage} from "../pages/about/about";
-import {ContactPage} from "../pages/contact/contact";
 import {ProductSearchService} from "../providers/product-search-service";
 
 @NgModule({
@@ -25,8 +22,6 @@ import {ProductSearchService} from "../providers/product-search-service";
     NoticePage,
     SearchList,
     ChemDetail,
-    AboutPage,
-    ContactPage,
     ProductDetail
   ],
   imports: [
@@ -42,10 +37,8 @@ import {ProductSearchService} from "../providers/product-search-service";
     NoticePage,
     SearchList,
     ChemDetail,
-    AboutPage,
-    ContactPage,
     ProductDetail
   ],
-  providers: [ChemSearchService, CommonService, ProductSearchService]
+  providers: [ChemSearchService, ProductSearchService]
 })
 export class AppModule {}

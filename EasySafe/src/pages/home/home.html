@@ -25,7 +25,7 @@
       </ion-slide>
     </ion-slides>
 
-    <input #searchBox id="search-box" (focus)="hideTab()" (blur)="hideTab()" (keydown.enter)="homeSearch($event, searchBox.value)" />
+    <input #searchBox id="search-box" (keydown.enter)="homeSearch($event, searchBox.value)" />
     <button ion-button class="searchBtn" (click)="homeSearch($event, searchBox.value)">
       <ion-icon ios="ios-search" md="md-search"></ion-icon>
     </button>

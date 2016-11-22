@@ -19,8 +19,13 @@
     <ion-icon md="md-search"></ion-icon>
   </button>
   <ion-list no-lines *ngIf="chems">
-    <ion-item *ngFor="let chem of chems" (click)="detail($event, chem.name)" class="search-result" >
+    <ion-item *ngFor="let chem of chems" (click)="chemdetail($event, chem.name)" class="search-result" >
       {{chem.name}}
+    </ion-item>
+  </ion-list>
+  <ion-list no-lines *ngIf="products">
+    <ion-item *ngFor="let product of products" (click)="productdetail($event, product.upc)" class="search-result" >
+      {{product.name}}
     </ion-item>
   </ion-list>
 
