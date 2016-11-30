@@ -1,12 +1,22 @@
 page-search-list {
 
+  .ion-item-divider{
+    color: #c8c7cc;
+  }
+
+  #search-component{
+    text-align: center;
+  }
+
+  #search-box{
+    width: 75%;
+    height: 2em;
+  }
+
+  .searchBtn{
+    height: 2em;
+    top: -5px;
+  }
+
 }
 
-.search-result{
-  cursor: pointer;
-  border-bottom: 1px solid gray !important;
-}
-.search-result:hover{
-  background-color: skyblue;
-  border-radius: 5px;
-}

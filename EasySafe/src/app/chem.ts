@@ -13,6 +13,7 @@ export class Chem {
   china: string;
   australia: string;
   avg: string;
+  no: string;
   viewcnt: number;
   replycnt: number;
 }

@@ -17,10 +17,11 @@ export class ProductDetail {
    chems: Array<{KOR: string, ENG: string, safety: string}>;*/
 
   product: Product;
+  dumy: Chem;
   chem: Chem;
   chems: Array<Chem>;
   chemnames: Array<string>;
-
+  nameUrl: string;
 
   constructor(public navCtrl: NavController,
               private navParams: NavParams,
@@ -36,6 +37,7 @@ export class ProductDetail {
      ]*/
     this.chems = new Array();
     this.chem = new Chem();
+    this.dumy = new Chem();
   }
 
   ionViewDidLoad() {
@@ -51,7 +53,7 @@ export class ProductDetail {
 
           for (let name in this.chemnames) {
 
-            var temp = new Chem();
+            let temp = new Chem();
             temp.name = this.chemnames[name];
             this.chems.push(temp);
 
@@ -73,8 +75,16 @@ export class ProductDetail {
   }
 
 
-  toChemDetail(event, name: string){
+  toChemDetail(event, name: string) {
+    console.dir(this.chems);
     this.navCtrl.push(ChemDetail, {name: name})
   }
+
+  toWiki(event, name: string) {
+    console.dir(this.chems);
+    let url = "https://ko.wikipedia.org/wiki/" + name;
+    window.open(url)
+  }
+
 
 }

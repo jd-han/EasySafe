@@ -13,15 +13,18 @@ import {ProductDetail} from "../product-detail/product-detail";
   templateUrl: 'search-list.html'
 })
 export class SearchList {
-  chems: Chem[];
-  products: Product[];
+  chems: Array<Chem>;
+  products: Array<Product>;
 
   constructor(
     public navCtrl: NavController,
     private chemSearchService: ChemSearchService,
     private navParams: NavParams,
     private productSearchService : ProductSearchService
-  ) {}
+  ) {
+    this.chems = new Array<Chem>();
+    this.products = new Array<Product>();
+  }
 
   ionViewDidLoad() {
     console.log('Hello SearchList Page');
@@ -46,7 +49,8 @@ export class SearchList {
 
   }
 
-  searchChem(term: string){
+  search(term: string){
+
     this.chemSearchService.searchChem(term)
       .subscribe(data =>{
           this.chems = data;
@@ -54,6 +58,15 @@ export class SearchList {
           console.log('searchList search error' + error);
         },
         () => console.log('searchlist search complete'));
+
+    this.productSearchService.searchProduct(term)
+      .subscribe(data =>{
+          this.products = data;
+        }, error => {
+          console.log('searchList product OnInit error' + error);
+        },
+        () => console.log('searchList to product searchlist complete'));
+
   }
 
   chemdetail(event, name: string){

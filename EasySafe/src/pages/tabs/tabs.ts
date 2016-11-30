@@ -25,7 +25,7 @@ export class TabsPage {
   }
 
   vuforia(){
-    let reslut;
+    let toto = this.navCtrl;
     let options = {
       databaseXmlFile: 'EasySafeDB.xml',
       targetList: [ '9331275008295'],
@@ -40,7 +40,7 @@ export class TabsPage {
         console.log(data);
 
         if(data.status.imageFound) {
-          reslut = data.result.imageName;
+          toto.push(ProductDetail, {upc : data.result.imageName});
         }
         else if (data.status.manuallyClosed) {
           alert("User manually closed Vuforia by pressing back!");
@@ -50,7 +50,5 @@ export class TabsPage {
         alert("Error: " + data);
       }
     );
-
-    this.navCtrl.push(ProductDetail, {upc : reslut});
   }
 }

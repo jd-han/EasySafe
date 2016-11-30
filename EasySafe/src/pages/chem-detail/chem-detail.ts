@@ -4,6 +4,7 @@ import {ChemSearchService} from "../../providers/chem-search-service";
 import {Chem} from "../../app/chem";
 import {ProductSearchService} from "../../providers/product-search-service";
 import {Product} from "../../app/product";
+import {ProductDetail} from "../product-detail/product-detail";
 
 @Component({
   selector: 'page-chem-detail',
@@ -14,7 +15,7 @@ export class ChemDetail {
   chem: Chem;
   casUrl: string;
   nameUrl: string;
-  productList: Product[];
+  products: Product[];
 
   constructor(public navCtrl: NavController,
               private navParams: NavParams,
@@ -39,10 +40,14 @@ export class ChemDetail {
 
     this.productSearchService.ProductWCompo(this.navParams.get('name'))
       .subscribe(data => {
-          this.productList = data;
+          this.products = data;
         }, error => {
           console.log('ProductWCompo.init err' + error);
         },
         () => console.log('ProductWCompo Complete'));
+  }
+
+  toProductDetail(event, upc:string){
+    this.navCtrl.push(ProductDetail, {upc: upc})
   }
 }

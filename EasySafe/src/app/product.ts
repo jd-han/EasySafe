@@ -3,7 +3,7 @@
  */
 export class Product {
   name: string;
-  ups: string;
+  upc: string;
   components: string;
   producer: string;
 }

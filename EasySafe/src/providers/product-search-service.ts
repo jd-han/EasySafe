@@ -18,7 +18,7 @@ export class ProductSearchService {
   constructor(public http: Http) {
     console.log('Hello ProductSearchService Provider');
     this.baseUrl = 'http://192.168.0.202:8000/app/';
-    // this.baseUrl = 'http://localhost:8000/app/';
+    //this.baseUrl = 'http://localhost:8000/app/';
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('Access-Control-Allow-Origin', '*');

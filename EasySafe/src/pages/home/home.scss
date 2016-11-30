@@ -11,7 +11,8 @@ ion-slide{
 }
 
 #logo{
-  width: 50%; height: 25%;
+  width: 85%;
+  height: auto;
   margin: auto;
 }
 
@@ -20,11 +21,12 @@ ion-slide{
 }
 
 #search-box{
-  width: 45%;
+  width: 75%;
+  height: 2em;
 }
 
 .searchBtn{
-  height: 30px;
+  height: 2em;
   top: -5px;
 }
 /*
@@ -74,7 +76,7 @@ html,body {
   background-color: #becfff;
   /*../assets/img/network.svg*/
   /*http://timteeling.com/dev/img/network.svg*/
-  background-image: url('../assets/img/network.svg'), radial-gradient(200% 200px at center, #abff58 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0));
+  background-image: url('../assets/img/network.svg'), radial-gradient(200% 200px at center, #abff58 0%, rgba(0,0,0,0) 60%, rgba(0,0,0,0));
   background-size: 125%, 10% 50%;
   background-position: 0 60%, 0 50%;
   animation: move 3s linear infinite;
