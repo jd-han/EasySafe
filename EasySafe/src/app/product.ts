@@ -6,4 +6,6 @@ export class Product {
   upc: string;
   components: string;
   producer: string;
+  thumimg : string;
+
 }

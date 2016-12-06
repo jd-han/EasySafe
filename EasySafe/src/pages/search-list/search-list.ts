@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {Chem} from "../../app/chem";
 import {ChemDetail} from "../chem-detail/chem-detail";
@@ -6,6 +6,8 @@ import {ChemSearchService} from "../../providers/chem-search-service";
 import {ProductSearchService} from "../../providers/product-search-service";
 import {Product} from "../../app/product";
 import {ProductDetail} from "../product-detail/product-detail";
+import {UserService} from "../../providers/user-service";
+import {AuthService} from "../../providers/auth-service";
 
 
 @Component({
@@ -16,12 +18,12 @@ export class SearchList {
   chems: Array<Chem>;
   products: Array<Product>;
 
-  constructor(
-    public navCtrl: NavController,
-    private chemSearchService: ChemSearchService,
-    private navParams: NavParams,
-    private productSearchService : ProductSearchService
-  ) {
+
+  constructor(public navCtrl: NavController,
+              private chemSearchService: ChemSearchService,
+              private navParams: NavParams,
+              private productSearchService: ProductSearchService,
+              private userService: UserService,) {
     this.chems = new Array<Chem>();
     this.products = new Array<Product>();
   }
@@ -29,53 +31,55 @@ export class SearchList {
   ionViewDidLoad() {
     console.log('Hello SearchList Page');
   }
-  ngOnInit(){
 
-    this.chemSearchService.searchChem(this.navParams.get('name'))
-      .subscribe(data =>{
-        this.chems = data;
-        }, error => {
-          console.log('searchList chems OnInit error' + error);
-        },
-        () => console.log('home to chems searchlist complete'));
+  ngOnInit() {
 
-    this.productSearchService.searchProduct(this.navParams.get('name'))
-      .subscribe(data =>{
-        this.products = data;
-        }, error => {
-          console.log('searchList product OnInit error' + error);
-        },
-        () => console.log('home to product searchlist complete'));
-
+    this.search(this.navParams.get('name'));
   }
 
-  search(term: string){
+  search(term: string) {
+    //검색로그 작성
+    this.userService.searchLogInput(term);
 
     this.chemSearchService.searchChem(term)
-      .subscribe(data =>{
+      .subscribe(data => {
           this.chems = data;
         }, error => {
           console.log('searchList search error' + error);
         },
-        () => console.log('searchlist search complete'));
+        () => console.log('searchlist searchChem complete'));
 
     this.productSearchService.searchProduct(term)
-      .subscribe(data =>{
+      .subscribe(data => {
+          if (data.length == 0) {
+            return
+          }
           this.products = data;
         }, error => {
-          console.log('searchList product OnInit error' + error);
+          console.log('searchList product error' + error);
         },
-        () => console.log('searchList to product searchlist complete'));
+        () => console.log('searchlist searchProduct complete'));
 
+    this.productSearchService.productListByUPC(term)
+      .subscribe(data => {
+          if (data.length == 0) {
+            return
+          }
+          this.products = data;
+        }, error => {
+          console.log('searchList productListByUPC error' + error);
+        },
+        () => console.log('searchlist searchto productListByUPC complete'));
   }
 
-  chemdetail(event, name: string){
+  chemdetail(event, name: string) {
     console.log('Detail' + name);
     this.navCtrl.push(ChemDetail, {name: name});
   }
-  productdetail(event, upc: string){
-    console.log('Detail' + upc);
-    this.navCtrl.push(ProductDetail, {upc: upc});
+
+  productdetail(event, name: string) {
+    console.log('Detail' + name);
+    this.navCtrl.push(ProductDetail, {name: name});
   }
 
 }

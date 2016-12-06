@@ -3,7 +3,7 @@
  */
 export class Chem {
   name: string;
-  kor: string;
+  korea: string;
   us: string;
   eu: string;
   ins: string;

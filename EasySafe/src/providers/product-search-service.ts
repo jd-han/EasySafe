@@ -17,8 +17,8 @@ export class ProductSearchService {
 
   constructor(public http: Http) {
     console.log('Hello ProductSearchService Provider');
-    this.baseUrl = 'http://192.168.0.202:8000/app/';
-    //this.baseUrl = 'http://localhost:8000/app/';
+    //this.baseUrl = 'http://192.168.0.202:8000/app/';
+    this.baseUrl = 'http://192.168.0.7:8000/app/';
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('Access-Control-Allow-Origin', '*');
@@ -36,6 +36,11 @@ export class ProductSearchService {
       .map(response => response.json())
   }
 
+  productListByUPC(term: string): Observable<any>{
+    return this.http
+      .get(this.baseUrl + 'productListSelectByUpc.do?upc=' + term)
+      .map(response => response.json())
+  }
   productUPCDetail(term: string): Observable<any>{
     return this.http
       .get(this.baseUrl + 'productDetailWUpc.do?upc=' + term)

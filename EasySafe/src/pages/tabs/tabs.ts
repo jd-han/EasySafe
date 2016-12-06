@@ -3,6 +3,9 @@ import { NavController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import {BarcodeScanner} from "ionic-native";
 import {ProductDetail} from "../product-detail/product-detail";
+import {ProductSearchService} from "../../providers/product-search-service";
+import {Product} from "../../app/product";
+import {SearchList} from "../search-list/search-list";
 
 @Component({
   templateUrl: 'tabs.html'
@@ -11,14 +14,25 @@ export class TabsPage {
   // this tells the tabs component which Pages
   // should be each tab's root Page
   tab1Root: any = HomePage;
-
-  constructor(public navCtrl: NavController) {
+  productList : Array<Product>;
+  constructor(
+    public navCtrl: NavController,
+    private productSearchService : ProductSearchService
+  ) {
 
   }
 
   upc(){
     BarcodeScanner.scan().then((barcodeData) => {
-      this.navCtrl.push(ProductDetail, {upc : barcodeData.text});
+      this.productSearchService.productListByUPC(barcodeData.text)
+        .subscribe(data =>{
+           this.productList = data;
+            if(this.productList.length==1){
+              this.navCtrl.push(ProductDetail, {upc : barcodeData.text});
+            }else{
+              this.navCtrl.push(SearchList, {name : barcodeData.text})
+            }
+        });
     }, (err) => {
       console.log(err)
     });
@@ -40,7 +54,16 @@ export class TabsPage {
         console.log(data);
 
         if(data.status.imageFound) {
-          toto.push(ProductDetail, {upc : data.result.imageName});
+          //toto.push(ProductDetail, {upc : data.result.imageName});
+          this.productSearchService.productListByUPC(data.result.imageName)
+            .subscribe(data =>{
+              this.productList = data;
+              if(this.productList.length==1){
+                this.navCtrl.push(ProductDetail, {upc : data.result.imageName});
+              }else{
+                this.navCtrl.push(SearchList, {name : data.result.imageName})
+              }
+            });
         }
         else if (data.status.manuallyClosed) {
           alert("User manually closed Vuforia by pressing back!");

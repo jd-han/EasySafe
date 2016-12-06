@@ -14,5 +14,14 @@
 
 
 <ion-content padding>
+  <div *ngIf="userData">
+    Hello {{userData.uname}}
+  </div>
+  <ion-list *ngIf="history">
+    <ion-item *ngFor="let keyVO of history" (click)="toSearchList(keyVO.keyword)" >
+      <span item-left>{{keyVO.keyword}}</span>
+      <span item-right>{{keyVO.regDate | date:'MM월 dd일'}}</span>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

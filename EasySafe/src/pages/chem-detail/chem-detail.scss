@@ -1,14 +1,20 @@
 page-chem-detail {
-  .imgSize {
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
-  }
 
-  .national {
+/*  .national {
     display: inline-block;
     width: 60px;
     line-height: 20px;
+    font-size: 2em;
+  }*/
+
+  .national{
+    font-size: 1em;
+  }
+
+  .imgSize {
+    width: 2em;
+    vertical-align: middle;
+    margin-right: 1em;
   }
 
 }

@@ -11,6 +11,13 @@ import {ChemDetail} from "../pages/chem-detail/chem-detail";
 import {ProductDetail} from "../pages/product-detail/product-detail";
 import {ChemSearchService} from "../providers/chem-search-service";
 import {ProductSearchService} from "../providers/product-search-service";
+import {AuthService} from "../providers/auth-service";
+import {LoadingService} from "../providers/loading-service";
+import {RegisterPage} from "../pages/register/register";
+import {ControlMessages} from "../providers/control-messages";
+import {ValidationService} from "../providers/validation-service";
+import {LoginPage} from "../pages/login/login";
+import {UserService} from "../providers/user-service";
 
 @NgModule({
   declarations: [
@@ -22,7 +29,10 @@ import {ProductSearchService} from "../providers/product-search-service";
     NoticePage,
     SearchList,
     ChemDetail,
-    ProductDetail
+    ProductDetail,
+    RegisterPage,
+    ControlMessages,
+    LoginPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -37,8 +47,11 @@ import {ProductSearchService} from "../providers/product-search-service";
     NoticePage,
     SearchList,
     ChemDetail,
-    ProductDetail
+    ProductDetail,
+    RegisterPage,
+    ControlMessages,
+    LoginPage
   ],
-  providers: [ChemSearchService, ProductSearchService]
+  providers: [ChemSearchService, ProductSearchService, AuthService, LoadingService, ControlMessages, ValidationService, UserService]
 })
 export class AppModule {}

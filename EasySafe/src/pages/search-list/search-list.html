@@ -14,19 +14,22 @@
     <ion-icon md="md-search"></ion-icon>
   </button>
   </div>
+  <ion-item *ngIf="chems.length==0 && products.length==0">
+    <h3>검색결과가 없습니다.</h3>
+    <img id="noResult"  src="assets/img/no_result_nobg.png">
+    </ion-item>
 
   <ion-item-divider *ngIf="chems.length>0">성분</ion-item-divider>
-
   <ion-list *ngIf="chems">
     <ion-item *ngFor="let chem of chems" (click)="chemdetail($event, chem.name)" class="search-result" >
       {{chem.name}}
     </ion-item>
   </ion-list>
 
-  <ion-item-divider *ngIf="products.length>0">상품</ion-item-divider>
 
+  <ion-item-divider *ngIf="products.length>0">상품</ion-item-divider>
   <ion-list *ngIf="products">
-    <ion-item *ngFor="let product of products" (click)="productdetail($event, product.upc)" class="search-result" >
+    <ion-item *ngFor="let product of products" (click)="productdetail($event, product.name)" class="search-result" >
       {{product.name}}
     </ion-item>
   </ion-list>

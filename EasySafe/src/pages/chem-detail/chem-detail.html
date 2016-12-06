@@ -9,126 +9,129 @@
   <div *ngIf="chem">
     <ion-item>
       <h1><a href="{{nameUrl}}">{{chem.name}}</a></h1>
+      <ion-avatar item-right *ngIf="chem.avg == 'A'">
+        평균 : <img class="imgSize" src="assets/img/col_green.png">
+      </ion-avatar>
+      <ion-avatar item-right *ngIf="chem.avg == 'I'">
+        평균 : <img class="imgSize" src="assets/img/col_yellow.png">
+      </ion-avatar>
+      <ion-avatar item-right *ngIf="chem.avg == 'B'">
+        평균 : <img class="imgSize" src="assets/img/col_red.png">
+      </ion-avatar>
     </ion-item>
 
     <ion-item>
-      <h2>INS번호</h2>
-      <h3 *ngIf="chem.ins != 'INS'" >{{chem.ins}}</h3>
-      <h3 *ngIf="chem.ins == 'INS'" >  -  </h3>
+      <h2>INS(국제 식품 첨가물 등록)번호</h2>
+      <h3 *ngIf="chem.ins != 'INS'">{{chem.ins}}</h3>
+      <h3 *ngIf="chem.ins == 'INS'"> - </h3>
     </ion-item>
 
     <ion-item>
       <h2>CAS번호</h2>
-      <h3 *ngIf="chem.cas != 'CAS'" ><a href="{{casUrl}}">{{chem.cas}}</a></h3>
-      <h3 *ngIf="chem.cas == 'CAS'" >  -  </h3>
+      <h3 *ngIf="chem.cas != 'CAS'"><a href="{{casUrl}}">{{chem.cas}}</a></h3>
+      <h3 *ngIf="chem.cas == 'CAS'"> - </h3>
     </ion-item>
-
-
-    <ion-item class="nationlist" >
-      <h2>국가별 식품 허용 정보</h2>
-      <div class="nation">
-        <div class="national"><h3>Korea</h3></div>
-        <div class="national" *ngIf="chem.name">
+    <ion-list *ngIf="chem">
+      <ion-list-header>국가/기관별 허용정보</ion-list-header>
+      <ion-item *ngIf="chem.korea">
+        Korea
+        <ion-avatar item-right *ngIf="chem.korea == 'A'">
           <img class="imgSize" src="assets/img/col_green.png">
-        </div>
-      </div>
-      <!--</ion-item>-->
-
-      <!--<ion-item>-->
-      <div class="nation">
-        <h3 class="national">Japan</h3>
-        <div class="national" class="national" *ngIf="chem.japan == 'A'">
-          <img class="imgSize" src="assets/img/col_green.png">
-        </div>
-        <div class="national" class="national" *ngIf="chem.japan == 'I'">
+        </ion-avatar>
+        <ion-avatar item-right *ngIf="chem.korea == 'I'">
           <img class="imgSize" src="assets/img/col_yellow.png">
-        </div>
-        <div class="national" class="national" *ngIf="chem.japan == 'B'">
+        </ion-avatar>
+        <ion-avatar item-right *ngIf="chem.korea == 'B'">
           <img class="imgSize" src="assets/img/col_red.png">
-        </div>
-      </div>
-      <!--</ion-item>-->
+        </ion-avatar>
+      </ion-item>
 
-      <!--<ion-item>-->
-      <div class="nation">
-        <h3 class="national">CODEX</h3>
-        <div class="national" *ngIf="chem.codex == 'A'">
+      <ion-item *ngIf="chem.us">
+        U.S.A
+        <ion-avatar item-right *ngIf="chem.us == 'A'">
           <img class="imgSize" src="assets/img/col_green.png">
-        </div>
-        <div class="national" *ngIf="chem.codex == 'I'">
+        </ion-avatar>
+        <ion-avatar item-right *ngIf="chem.us == 'I'">
           <img class="imgSize" src="assets/img/col_yellow.png">
-        </div>
-        <div class="national" *ngIf="chem.codex == 'B'">
+        </ion-avatar>
+        <ion-avatar item-right *ngIf="chem.us == 'B'">
           <img class="imgSize" src="assets/img/col_red.png">
-        </div>
-      </div>
-      <!--</ion-item>-->
+        </ion-avatar>
+      </ion-item>
 
-      <!--<ion-item>-->
-      <div class="nation">
-        <h3 class="national">EU</h3>
-        <div class="national" *ngIf="chem.eu == 'A'">
+      <ion-item *ngIf="chem.japan">
+        Japan
+        <ion-avatar item-right *ngIf="chem.japan == 'A'">
           <img class="imgSize" src="assets/img/col_green.png">
-        </div>
-        <div class="national" *ngIf="chem.eu == 'I'">
+        </ion-avatar>
+        <ion-avatar item-right *ngIf="chem.japan == 'I'">
           <img class="imgSize" src="assets/img/col_yellow.png">
-        </div>
-        <div class="national" *ngIf="chem.eu == 'B'">
+        </ion-avatar>
+        <ion-avatar item-right *ngIf="chem.japan == 'B'">
           <img class="imgSize" src="assets/img/col_red.png">
-        </div>
-      </div>
-      <!--</ion-item>-->
+        </ion-avatar>
+      </ion-item>
 
-      <!--<ion-item>-->
-      <div class="nation">
-        <h3 class="national">US</h3>
-        <div class="national" *ngIf="chem.us == 'A'">
+      <ion-item *ngIf="chem.eu">
+        EU
+        <ion-avatar item-right *ngIf="chem.eu == 'A'">
           <img class="imgSize" src="assets/img/col_green.png">
-        </div>
-        <div class="national" *ngIf="chem.us == 'I'">
+        </ion-avatar>
+        <ion-avatar item-right *ngIf="chem.eu == 'I'">
           <img class="imgSize" src="assets/img/col_yellow.png">
-        </div>
-        <div class="national" *ngIf="chem.us == 'B'">
+        </ion-avatar>
+        <ion-avatar item-right *ngIf="chem.eu == 'B'">
           <img class="imgSize" src="assets/img/col_red.png">
-        </div>
-      </div>
-      <!--</ion-item>-->
+        </ion-avatar>
+      </ion-item>
 
-      <!--<ion-item>-->
-      <div class="nation">
-        <h3 class="national">China</h3>
-        <div class="national" *ngIf="chem.china == 'A'">
+      <ion-item *ngIf="chem.china">
+        China
+        <ion-avatar item-right *ngIf="chem.china == 'A'">
           <img class="imgSize" src="assets/img/col_green.png">
-        </div>
-        <div class="national" *ngIf="chem.china == 'I'">
+        </ion-avatar>
+        <ion-avatar item-right *ngIf="chem.china == 'I'">
           <img class="imgSize" src="assets/img/col_yellow.png">
-        </div>
-        <div class="national" *ngIf="chem.china == 'B'">
+        </ion-avatar>
+        <ion-avatar item-right *ngIf="chem.china == 'B'">
           <img class="imgSize" src="assets/img/col_red.png">
-        </div>
-      </div>
-      <!--</ion-item>-->
+        </ion-avatar>
+      </ion-item>
 
-      <!--<ion-item>-->
-      <div class="nation">
-        <h3 class="national">Australia</h3>
-        <div class="national" *ngIf="chem.aus == 'A'">
+      <ion-item *ngIf="chem.australia">
+        Australia
+        <ion-avatar item-right *ngIf="chem.australia == 'A'">
           <img class="imgSize" src="assets/img/col_green.png">
-        </div>
-        <div class="national" *ngIf="chem.aus == 'I'">
+        </ion-avatar>
+        <ion-avatar item-right *ngIf="chem.australia == 'I'">
           <img class="imgSize" src="assets/img/col_yellow.png">
-        </div>
-        <div class="national" *ngIf="chem.aus == 'B'">
+        </ion-avatar>
+        <ion-avatar item-right *ngIf="chem.australia == 'B'">
           <img class="imgSize" src="assets/img/col_red.png">
-        </div>
-      </div>
-    </ion-item>
+        </ion-avatar>
+      </ion-item>
 
-    <!--</ion-list>-->
+      <ion-item *ngIf="chem.codex">
+        CODEX
+        <ion-avatar item-right *ngIf="chem.codex == 'A'">
+          <img class="imgSize" src="assets/img/col_green.png">
+        </ion-avatar>
+        <ion-avatar item-right *ngIf="chem.codex == 'I'">
+          <img class="imgSize" src="assets/img/col_yellow.png">
+        </ion-avatar>
+        <ion-avatar item-right *ngIf="chem.codex == 'B'">
+
+          <img class="imgSize" src="assets/img/col_red.png">
+        </ion-avatar>
+      </ion-item>
+    </ion-list>
+
   </div>
   <ion-list-header>이 성분을 포함한 상품</ion-list-header>
   <ion-list *ngIf="products">
-    <ion-item *ngFor="let product of products" (click)="toProductDetail($event, product.upc)" class="search-result" >
+    <ion-item *ngFor="let product of products"
+              (click)="toProductDetail($event, product.name)"
+              class="search-result">
       {{product.name}}
     </ion-item>
   </ion-list>

@@ -5,6 +5,15 @@
 </ion-header>
 
 <ion-content>
+  <div *ngIf="!chems">
+    검색 결과가 없습니다.
+  </div>
+  <div id="productImg" *ngIf="product">
+    <img src="{{product.thumimg}}"/>
+  </div>
+  <div id="productProducer" *ngIf="product">
+  판매사 : {{product.producer}}
+  </div>
   <ion-list *ngIf="chems">
     <ion-list-header>주요 성분</ion-list-header>
 
@@ -36,26 +45,3 @@
   </ion-list>
 
 </ion-content>
-
-<!--<ion-content>
-  <div style="margin-left: 1em; margin-top: 1em; width: 100%;">
-    <img style="vertical-align: middle;" src="assets/img/{{pros.totalSafety}}">
-      {{pros.name}}
-    <div style="position: absolute; display: inline-block; right: 1em;">
-      <img style="vertical-align: middle; visibility: hidden;" src="assets/img/{{pros.totalSafety}}">
-      {{pros.boycott}}
-    </div>
-  </div>
-  <h2>&nbsp;제품에 들어간 성분</h2>
-  <ion-list>
-    <ion-item *ngFor="let chem of chems">
-      <div style="display: inline-block;">
-        {{chem.KOR}}<br />
-        {{chem.ENG}}
-      </div>
-      <div style="display: inline-block; position: absolute; right: 1em;">
-        <img style="vertical-align: middle;" src="assets/img/{{chem.safety}}">
-      </div>
-    </ion-item>
-  </ion-list>
-</ion-content>-->

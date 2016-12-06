@@ -5,8 +5,9 @@ import {StatusBar, Splashscreen, Keyboard} from 'ionic-native';
 import { TabsPage } from '../pages/tabs/tabs';
 import {NoticePage} from "../pages/notice/notice";
 import {ContactPage} from "../pages/contact/contact";
-import {CameraPage} from "../pages/camera/camera";
-import {ProductDetail} from "../pages/product-detail/product-detail";
+import {RegisterPage} from "../pages/register/register";
+import {LoginPage} from "../pages/login/login";
+import {HistoryPage} from "../pages/history/history";
 
 
 @Component({
@@ -15,6 +16,7 @@ import {ProductDetail} from "../pages/product-detail/product-detail";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
+  login : any;
   rootPage: any;
   pages: Array<{title: string, component: any}>;
 
@@ -27,7 +29,9 @@ export class MyApp {
     this.rootPage = TabsPage;
     this.pages = [
       { title: 'Notice', component: NoticePage },
-      { title: 'Camera', component: CameraPage },
+      { title: 'Login', component: LoginPage },
+      { title: 'reg', component: RegisterPage },
+      { title: 'History', component: HistoryPage },
     ];
 
     platform.ready().then(() => {
