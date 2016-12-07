@@ -16,9 +16,9 @@ export class AuthService {
 
  // url: string = 'http://192.168.0.202:8000/appuser';
   private url: string ;
-  private isLogin: boolean; //로그인 확인용
-  private token: any; //우리 토큰
-  private okToUse: boolean = false;
+  public isLogin: boolean; //로그인 확인용
+  private token: any; // 토큰
+
   private profile: any = {}; // 정보 저장용 프로파일
   private headers : Headers;
   private options: RequestOptions;
@@ -262,7 +262,10 @@ export class AuthService {
       },
       () => {
         console.log('접니다')
-      })
+      });
+
+
   }
+
 
 }

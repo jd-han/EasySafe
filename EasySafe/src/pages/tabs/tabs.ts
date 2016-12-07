@@ -39,7 +39,6 @@ export class TabsPage {
   }
 
   vuforia(){
-    let toto = this.navCtrl;
     let options = {
       databaseXmlFile: 'EasySafeDB.xml',
       targetList: [ '9331275008295'],
@@ -54,7 +53,6 @@ export class TabsPage {
         console.log(data);
 
         if(data.status.imageFound) {
-          //toto.push(ProductDetail, {upc : data.result.imageName});
           this.productSearchService.productListByUPC(data.result.imageName)
             .subscribe(data =>{
               this.productList = data;

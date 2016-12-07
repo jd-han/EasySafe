@@ -19,7 +19,6 @@ import {ValidationService} from "../../providers/validation-service";
 })
 export class RegisterPage {
   registerForm: FormGroup; // 폼 객체
-  emailValid: boolean = false; // 서버에 아이디[이메일]이 존재하는지 확인
 
   constructor(public navCtrl: NavController,
               private formBuilder: FormBuilder,
@@ -36,7 +35,6 @@ export class RegisterPage {
      'userpwdchk': ['', [Validators.required]],
      }, {validator: RegisterPage.passwordsMatch});*/
 
-    let emailpattern = '^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$';
 
     this.registerForm = new FormGroup({
       uid: new FormControl('', [Validators.maxLength(30), Validators.minLength(6), Validators.pattern('[a-zA-Z ]*'), Validators.required]),
@@ -76,14 +74,7 @@ export class RegisterPage {
     return rv;
   }
 
-  static passwordMatchValidator(g: FormGroup) {
-    return g.get('upw').value === g.get('upwchk').value
-      ? null : {'mismatch': true};
-  }
 
-
-
-  // emailCheck 이메일 중복체크 버튼 팝업용 함수
   //true 이면 존재하는 아이디
   idFlag: boolean = false;
 

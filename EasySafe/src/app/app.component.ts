@@ -4,7 +4,6 @@ import {StatusBar, Splashscreen, Keyboard} from 'ionic-native';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import {NoticePage} from "../pages/notice/notice";
-import {ContactPage} from "../pages/contact/contact";
 import {RegisterPage} from "../pages/register/register";
 import {LoginPage} from "../pages/login/login";
 import {HistoryPage} from "../pages/history/history";
@@ -16,7 +15,6 @@ import {HistoryPage} from "../pages/history/history";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  login : any;
   rootPage: any;
   pages: Array<{title: string, component: any}>;
 
@@ -24,6 +22,7 @@ export class MyApp {
     private platform: Platform,
     private  menu: MenuController,
   ) {
+
     this.initializeApp();
     this.menu = menu;
     this.rootPage = TabsPage;
@@ -63,4 +62,6 @@ export class MyApp {
     //this.nav.setRoot(page.component);
     this.nav.push(page.component);
   }
+
+
 }

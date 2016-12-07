@@ -7,7 +7,6 @@ import {ProductSearchService} from "../../providers/product-search-service";
 import {Product} from "../../app/product";
 import {ProductDetail} from "../product-detail/product-detail";
 import {UserService} from "../../providers/user-service";
-import {AuthService} from "../../providers/auth-service";
 
 
 @Component({
@@ -24,8 +23,6 @@ export class SearchList {
               private navParams: NavParams,
               private productSearchService: ProductSearchService,
               private userService: UserService,) {
-    this.chems = new Array<Chem>();
-    this.products = new Array<Product>();
   }
 
   ionViewDidLoad() {
@@ -38,6 +35,8 @@ export class SearchList {
   }
 
   search(term: string) {
+    this.chems = new Array<Chem>();
+    this.products = new Array<Product>();
     //검색로그 작성
     this.userService.searchLogInput(term);
 
