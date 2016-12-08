@@ -14,16 +14,20 @@
 
 
 <ion-content padding>
-  <div *ngIf="user">
+  <ion-item *ngIf="user">
     Hello {{user.uname}}
-  </div>
+  </ion-item>
   <ion-list *ngIf="history">
     <button ion-item *ngFor="let keyVO of history"
               (click)="toSearchList(keyVO.keyword)">
         {{keyVO.keyword}}
         <span item-right>{{keyVO.regDate | date:'MM월 dd일'}}</span>
-
     </button>
   </ion-list>
+
+  <ion-item *ngIf="!user">
+    로그인 해주세요.
+  </ion-item>
+
 
 </ion-content>

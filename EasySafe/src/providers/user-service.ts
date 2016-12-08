@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from "rxjs";
+import {Events} from "ionic-angular";
 
 /*
   Generated class for the UserService provider.
@@ -13,11 +14,15 @@ import {Observable} from "rxjs";
 export class UserService {
 
   private url: string ;
-  private uid: string;
   private headers : Headers;
   private options: RequestOptions;
 
-  constructor(public http: Http) {
+  HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
+
+  constructor(
+    public http: Http,
+    public events: Events,
+  ) {
     this.url = 'http://192.168.0.7:8000/appuser';
 
     this.headers = new Headers();
@@ -25,7 +30,6 @@ export class UserService {
 
     this.options  = new RequestOptions({method : "POST", headers: this.headers});
 
-    this.uid = window.localStorage.getItem("uid");
     console.log('Hello UserService Provider');
   }
 
@@ -35,7 +39,9 @@ export class UserService {
   그러나 리턴값이 없어 오류가 남.
   */
   searchLogInput(term){
-    let body = JSON.stringify({user: this.uid, keyword: term});
+    let uid = window.localStorage.getItem("uid");
+    console.log("in UserService this.uid : " + uid);
+    let body = JSON.stringify({user: uid, keyword: term});
     this.http.post(this.url + '/searchLogInput.do', body, this.options)
       .map(response => response.json())
       .subscribe();
@@ -47,11 +53,16 @@ export class UserService {
 *
 * */
   getSearchLog(): Observable<any>{
-    console.log("in UserService this.uid : " + this.uid);
-    let body = JSON.stringify({user: this.uid});
+    let uid = window.localStorage.getItem("uid");
+    console.log("in UserService this.uid : " + uid);
+    let body = JSON.stringify({user: uid});
     console.dir(body);
     return this.http.post(this.url + '/searchLogOutput.do', body, this.options)
       .map(response => response.json())
+  }
+
+  checkHasSeenTutorial() {
+    return window.localStorage.getItem("HAS_SEEN_TUTORIAL")
   }
 
 }

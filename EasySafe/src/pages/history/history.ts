@@ -18,6 +18,10 @@ export class HistoryPage {
               private authService: AuthService,
               private userService: UserService,
               private alertCtrl: AlertController) {
+
+    this.user = null;
+    this.history = null;
+
     this.navCtrl = navCtrl;
     this.authService.getUserByToken().then(
       data => {

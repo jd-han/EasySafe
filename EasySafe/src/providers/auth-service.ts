@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import {LoadingService} from "./loading-service";
 import {Facebook} from "ionic-native";
 import {Observable} from "rxjs";
+import {Events} from "ionic-angular";
 
 /*
  Generated class for the AuthService provider.
@@ -14,16 +15,20 @@ import {Observable} from "rxjs";
 @Injectable()
 export class AuthService {
 
- // url: string = 'http://192.168.0.202:8000/appuser';
-  private url: string ;
+  // url: string = 'http://192.168.0.202:8000/appuser';
+  private url: string;
   public isLogin: boolean; //로그인 확인용
   private token: any; // 토큰
 
   private profile: any = {}; // 정보 저장용 프로파일
-  private headers : Headers;
+  private headers: Headers;
   private options: RequestOptions;
 
-  constructor(public http: Http, public loadingService: LoadingService) {
+  constructor(
+    public http: Http,
+    public loadingService: LoadingService,
+    public events: Events,
+  ) {
     this.url = 'http://192.168.0.7:8000/appuser';
 
     this.isLogin = false;
@@ -33,7 +38,7 @@ export class AuthService {
     this.headers.append('Content-Type', 'application/json');
     //this.headers.append('Access-Control-Allow-Origin', '*');
 
-    this.options  = new RequestOptions({method : "POST", headers: this.headers});
+    this.options = new RequestOptions({method: "POST", headers: this.headers});
   }
 
 
@@ -89,6 +94,7 @@ export class AuthService {
           if (data.json().token != null) {
             this.storeUserId(data.json().uid);
             this.storeUserCredentials(data.json().token);
+            this.events.publish('user:login');
             this.loadingPage(false);
             resolve(true);
           }
@@ -100,7 +106,6 @@ export class AuthService {
         });
     });
   }
-
 
 
   //페이스북 로그인
@@ -218,10 +223,18 @@ export class AuthService {
     this.isLogin = false;
     this.token = null;
     window.localStorage.removeItem('token');
+    window.localStorage.removeItem('uid');
+    console.log("window.localStorage.removeItem('uid') : " + window.localStorage.getItem('uid'));
+    /*
+     console.log("this.isLogin : "+ this.isLogin );
+     console.log("this.token : "+ this.token);
+     console.log("window.localStorage.getItem('token') : "+ window.localStorage.getItem('token'));
+
+     this.isLogin : false
+     this.token : null
+     window.localStorage.getItem('token') : null
+     */
   }
-
-
-
 
 
 //토큰으로 로그인하기
@@ -243,6 +256,7 @@ export class AuthService {
 
   logout() {
     this.destroyUserCredentials();
+    this.events.publish('user:logout');
   }
 
 
@@ -265,6 +279,10 @@ export class AuthService {
       });
 
 
+  }
+
+  authenticated() {
+    return this.isLogin
   }
 
 
