@@ -13,15 +13,15 @@ import {Observable} from "rxjs";
 export class ProductSearchService {
 
   private baseUrl: string;
-  private headers: Headers;
+/*  private headers: Headers;*/
 
   constructor(public http: Http) {
     console.log('Hello ProductSearchService Provider');
     //this.baseUrl = 'http://192.168.0.202:8000/app/';
     this.baseUrl = 'http://192.168.0.7:8000/app/';
-    this.headers = new Headers();
+   /* this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
-    this.headers.append('Access-Control-Allow-Origin', '*');
+    this.headers.append('Access-Control-Allow-Origin', '*');*/
   }
 
   searchProduct(term: string): Observable<any>{

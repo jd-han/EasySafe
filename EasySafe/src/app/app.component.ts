@@ -3,7 +3,7 @@ import {Platform, MenuController, Nav, Events} from 'ionic-angular';
 import {StatusBar, Splashscreen, Keyboard} from 'ionic-native';
 
 import { TabsPage } from '../pages/tabs/tabs';
-import {NoticePage} from "../pages/notice/notice";
+import {NoticeListPage} from "../pages/notice-list/notice-list";
 import {LoginPage} from "../pages/login/login";
 import {HistoryPage} from "../pages/history/history";
 import {AuthService} from "../providers/auth-service";
@@ -29,12 +29,12 @@ export class MyApp {
   rootPage: any;
 
   loggedInPages: PageInterface[] = [
-    { title: 'Notice', component: NoticePage },
+    { title: 'Notice', component: NoticeListPage},
     { title: 'History', component: HistoryPage }
   ];
 
   loggedOutPages: PageInterface[] = [
-    { title: 'Notice', component: NoticePage },
+    { title: 'Notice', component: NoticeListPage },
     { title: 'Signup', component: RegisterPage, icon: 'person-add' }
   ];
 
