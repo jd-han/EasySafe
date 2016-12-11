@@ -47,7 +47,7 @@ export class ChemDetail {
         () => console.log('ProductWCompo Complete'));
   }
 
-  toProductDetail(event, name:string){
-    this.navCtrl.push(ProductDetail, {name: name})
+  toProductDetail(product:Product){
+    this.navCtrl.push(ProductDetail, {product: product})
   }
 }

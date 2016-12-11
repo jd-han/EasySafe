@@ -18,20 +18,22 @@ export class NoticeListPage {
 
   noticeList : Array<Notice>;
   private start:number=0;
+  loadready : boolean;
 
   constructor(
     public navCtrl: NavController,
     private boardService : BoardService,
     private modalCtrl : ModalController
   ) {
+    this.loadready = false;
     this.noticeList = new Array<Notice>();
     this.boardService.getNoticeBoardList(this.start)
       .subscribe(data =>{
-        alert("in notice-list");
         this.start +=10 ;
-
+        console.log("in notice-list");
         this.noticeList=data;
-        alert(this.noticeList);
+        console.dir(this.noticeList);
+        this.loadready = true;
       });
   }
 
@@ -40,16 +42,20 @@ export class NoticeListPage {
   }
 
   getNotice(){
-  this.boardService.getNoticeBoardList(this.start)
-    .subscribe(data =>{
-      console.log("in notice-list");
-      this.start +=10 ;
+    if(this.loadready){
+      this.loadready = false;
+      this.boardService.getNoticeBoardList(this.start)
+        .subscribe(data =>{
+          this.start +=10;
+          console.log("in notice-list");
 
-      this.noticeList = this.noticeList.concat(data);
-      console.dir(data);
-      console.log("after concat : this.noticeList");
-      console.dir(this.noticeList)
-    })
+          this.noticeList = this.noticeList.concat(data);
+          console.dir(data);
+          console.log("after concat : this.noticeList");
+          console.dir(this.noticeList);
+          this.loadready=true;
+        })
+    }
   }
 
   openModal(notice){

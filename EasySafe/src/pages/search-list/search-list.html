@@ -29,7 +29,7 @@
 
   <ion-item-divider *ngIf="products.length>0">상품</ion-item-divider>
   <ion-list *ngIf="products">
-    <ion-item *ngFor="let product of products" (click)="productdetail($event, product.name)" class="search-result" >
+    <ion-item *ngFor="let product of products" (click)="productdetail(product)" class="search-result" >
       {{product.name}}
     </ion-item>
   </ion-list>

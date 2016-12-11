@@ -29,12 +29,12 @@ export class MyApp {
   rootPage: any;
 
   loggedInPages: PageInterface[] = [
-    { title: 'Notice', component: NoticeListPage},
-    { title: 'History', component: HistoryPage }
+    { title: 'Notice', component: NoticeListPage, icon:'list-box'},
+    { title: 'History', component: HistoryPage, icon:'filing' }
   ];
 
   loggedOutPages: PageInterface[] = [
-    { title: 'Notice', component: NoticeListPage },
+    { title: 'Notice', component: NoticeListPage, icon:'list-box' },
     { title: 'Signup', component: RegisterPage, icon: 'person-add' }
   ];
 

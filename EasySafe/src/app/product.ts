@@ -7,5 +7,8 @@ export class Product {
   components: string;
   producer: string;
   thumimg : string;
+  code:string;
+  seqcode:string;
+  type:string;
 
 }

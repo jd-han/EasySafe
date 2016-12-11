@@ -130,7 +130,7 @@
   <ion-list-header>이 성분을 포함한 상품</ion-list-header>
   <ion-list *ngIf="products">
     <ion-item *ngFor="let product of products"
-              (click)="toProductDetail($event, product.name)"
+              (click)="toProductDetail(product)"
               class="search-result">
       {{product.name}}
     </ion-item>

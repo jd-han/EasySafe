@@ -62,7 +62,7 @@ export class ProductDetail {
 
 
     //get in product detail by name : when upc has duplicate
-    this.productSearchService.productDetail(this.navParams.get('name'))
+   /* this.productSearchService.productDetail(this.navParams.get('name'))
       .subscribe(data => {
         console.log("get in product detail by name");
           this.product = data;
@@ -87,7 +87,27 @@ export class ProductDetail {
         }, error => {
           console.log('productDetail.init err' + error);
         },
-        () => console.log('productDetail Complete'));
+        () => console.log('productDetail Complete'));*/
+
+    this.product = this.navParams.get('product');
+    console.dir(this.product);
+    this.chemnames = this.product.components.split(" ");
+
+    for (let name in this.chemnames) {
+
+      let temp = new Chem();
+      temp.name = this.chemnames[name];
+      this.chems.push(temp);
+
+      this.chemSearchService.chemAvg(this.chemnames[name])
+        .subscribe(data => {
+            this.chem = data;
+            this.chems[name] = this.chem;
+          }, error => {
+            console.log('chemAvg.init err' + error);
+          },
+          () => console.log('chemAvg Complete'));
+    }
 
   }
 

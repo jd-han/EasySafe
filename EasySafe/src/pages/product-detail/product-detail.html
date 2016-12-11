@@ -12,7 +12,10 @@
     <img src="{{product.thumimg}}"/>
   </div>
   <div id="productProducer" *ngIf="product">
-  판매사 : {{product.producer}}
+    판매사 : {{product.producer}}
+  </div>
+  <div id="productType" *ngIf="product">
+    종류 : {{product.type}}
   </div>
   <ion-list *ngIf="chems">
     <ion-list-header>주요 성분</ion-list-header>

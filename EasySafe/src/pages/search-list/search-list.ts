@@ -76,9 +76,8 @@ export class SearchList {
     this.navCtrl.push(ChemDetail, {name: name});
   }
 
-  productdetail(event, name: string) {
-    console.log('Detail' + name);
-    this.navCtrl.push(ProductDetail, {name: name});
+  productdetail(product: Product) {
+    this.navCtrl.push(ProductDetail, {product: product});
   }
 
 }
