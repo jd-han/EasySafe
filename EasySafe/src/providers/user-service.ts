@@ -13,7 +13,7 @@ import {Events} from "ionic-angular";
 @Injectable()
 export class UserService {
 
-  private url: string ;
+  private baseUrl: string ;
   private headers : Headers;
   private options: RequestOptions;
 
@@ -23,7 +23,8 @@ export class UserService {
     public http: Http,
     public events: Events,
   ) {
-    this.url = 'http://192.168.0.7:8000/appuser';
+    // this.url = 'http://192.168.0.7:8000/appuser';
+    this.baseUrl = 'http://www.easysafe.info/appuser';
 
     this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
@@ -42,7 +43,7 @@ export class UserService {
     let uid = window.localStorage.getItem("uid");
     console.log("in UserService this.uid : " + uid);
     let body = JSON.stringify({user: uid, keyword: term});
-    this.http.post(this.url + '/searchLogInput.do', body, this.options)
+    this.http.post(this.baseUrl + '/searchLogInput.do', body, this.options)
       .map(response => response.json())
       .subscribe();
     //this.http.get(this.url + '/searchLogInput.do');
@@ -57,7 +58,7 @@ export class UserService {
     console.log("in UserService this.uid : " + uid);
     let body = JSON.stringify({user: uid});
     console.dir(body);
-    return this.http.post(this.url + '/searchLogOutput.do', body, this.options)
+    return this.http.post(this.baseUrl + '/searchLogOutput.do', body, this.options)
       .map(response => response.json())
   }
 

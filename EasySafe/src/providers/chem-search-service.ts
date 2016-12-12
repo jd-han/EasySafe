@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http, Headers, RequestOptions} from '@angular/http';
+import {Http} from '@angular/http';
 import {Observable} from "rxjs";
 
 /*
@@ -14,7 +14,8 @@ export class ChemSearchService {
 /*  private headers: Headers;*/
   constructor(public http: Http) {
     console.log('Hello ChemSearchService Provider');
-    this.baseUrl = 'http://192.168.0.7:8000/app/';
+    // this.baseUrl = 'http://192.168.0.7:8000/app/';
+    this.baseUrl = 'http://www.easysafe.info/app/';
  /*   this.headers = new Headers();
     this.headers.append('Content-Type', 'application/json');
     this.headers.append('Access-Control-Allow-Origin', '*');*/

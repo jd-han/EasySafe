@@ -29,7 +29,8 @@ export class AuthService {
     public loadingService: LoadingService,
     public events: Events,
   ) {
-    this.url = 'http://192.168.0.7:8000/appuser';
+    // this.url = 'http://192.168.0.7:8000/appuser';
+    this.url = 'http://www.easysafe.info/appuser';
 
     this.isLogin = false;
     this.token = null;

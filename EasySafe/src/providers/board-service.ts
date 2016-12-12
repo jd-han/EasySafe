@@ -16,7 +16,8 @@ export class BoardService {
 
   constructor(public http: Http) {
     console.log('Hello BoardService Provider');
-    this.baseUrl = 'http://192.168.0.7:8000/app';
+    // this.baseUrl = 'http://192.168.0.7:8000/app';
+    this.baseUrl = 'http://www.easysafe.info/app';
   }
 
   getNoticeBoardList(no) : Observable<any>{
