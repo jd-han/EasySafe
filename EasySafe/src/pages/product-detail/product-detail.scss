@@ -1,8 +1,15 @@
 page-product-detail {
-  #productImg {
+  #productImgDiv {
     text-align: center;
+    height: 50%;
   }
-  #productProducer {
+  #productImg {
+    display: block;
+    margin: auto;
+    height: 100%;
+    width: auto;
+  }
+  #productInfo {
     text-align: right;
     font-size: 1em;
     margin-right: 1em;

@@ -14,6 +14,7 @@ export class Chem {
   australia: string;
   avg: string;
   no: string;
+  type: string;
   viewcnt: number;
   replycnt: number;
 }

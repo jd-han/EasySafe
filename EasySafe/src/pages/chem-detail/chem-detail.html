@@ -9,7 +9,7 @@
   <div *ngIf="chem">
     <ion-item>
       <h1><a href="{{nameUrl}}">{{chem.name}}</a></h1>
-      <ion-avatar item-right *ngIf="chem.avg == 'A'">
+<!--      <ion-avatar item-right *ngIf="chem.avg == 'A'">
         평균 : <img class="imgSize" src="assets/img/col_green.png">
       </ion-avatar>
       <ion-avatar item-right *ngIf="chem.avg == 'I'">
@@ -17,7 +17,33 @@
       </ion-avatar>
       <ion-avatar item-right *ngIf="chem.avg == 'B'">
         평균 : <img class="imgSize" src="assets/img/col_red.png">
+      </ion-avatar>-->
+    </ion-item>
+
+    <ion-item *ngIf="chem.avg == 'A'">
+      안심하고 섭취하셔도 괜찮아요.
+      <ion-avatar item-right >
+        평균<img class="imgSize" src="assets/img/col_green.png">
       </ion-avatar>
+    </ion-item>
+
+    <ion-item *ngIf="chem.avg == 'I'">
+      섭취량에 주의 하세요.
+      <ion-avatar item-right >
+        평균<img class="imgSize" src="assets/img/col_yellow.png">
+      </ion-avatar>
+    </ion-item>
+
+    <ion-item *ngIf="chem.avg == 'B'">
+      섭취하지 마세요! 금지된 성분입니다.
+      <ion-avatar item-right >
+        평균<img class="imgSize" src="assets/img/col_red.png">
+      </ion-avatar>
+    </ion-item>
+
+    <ion-item>
+      <h2>주 용도</h2>
+      <h3>{{chem.type}}</h3>
     </ion-item>
 
     <ion-item>
@@ -127,7 +153,8 @@
     </ion-list>
 
   </div>
-  <ion-list-header>이 성분을 포함한 상품</ion-list-header>
+  <ion-list-header>이 성분을 포함한 상품
+    <span item-right *ngIf="products">총 {{products.length}}개</span> </ion-list-header>
   <ion-list *ngIf="products">
     <ion-item *ngFor="let product of products"
               (click)="toProductDetail(product)"

@@ -8,13 +8,11 @@
   <div *ngIf="!chems">
     검색 결과가 없습니다.
   </div>
-  <div id="productImg" *ngIf="product">
-    <img src="{{product.thumimg}}"/>
+  <div id="productImgDiv" *ngIf="product">
+    <img id="productImg" src="{{product.thumimg}}"/>
   </div>
-  <div id="productProducer" *ngIf="product">
-    판매사 : {{product.producer}}
-  </div>
-  <div id="productType" *ngIf="product">
+  <div id="productInfo" *ngIf="product">
+    판매사 : {{product.producer}}<br>
     종류 : {{product.type}}
   </div>
   <ion-list *ngIf="chems">
