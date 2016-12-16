@@ -75,7 +75,9 @@ export class AuthService {
         .subscribe(data => {
           if (data.json().token) {
             // alert(data.json().ourToken);
+            this.storeUserId(data.json().uid);
             this.storeUserCredentials(data.json().token);
+            this.events.publish('user:login');
             resolve(true);
           }
           else

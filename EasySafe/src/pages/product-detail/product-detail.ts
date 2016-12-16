@@ -33,81 +33,88 @@ export class ProductDetail {
 
   ngOnInit() {
 
-    this.productSearchService.productUPCDetail(this.navParams.get('upc'))
-      .subscribe(data => {
-          console.log("get in product detail by upc : after barcode scan and result is only one");
-          this.product = data;
-          this.chemnames = this.product.components.split(" ");
+    if(this.navParams.get('product') != null){
+      console.log("this.navParams.get('product') != null");
+      this.product = this.navParams.get('product');
+      console.dir(this.product);
 
-          for (let name in this.chemnames) {
+      this.chemnames = this.product.components.split(" ");
 
-            let temp = new Chem();
-            temp.name = this.chemnames[name];
-            this.chems.push(temp);
+      for (let name in this.chemnames) {
 
-            this.chemSearchService.chemAvg(this.chemnames[name])
-              .subscribe(data => {
-                  this.chem = data;
-                  this.chems[name] = this.chem;
-                }, error => {
-                  console.log('chemAvg.init err' + error);
-                },
-                () => console.log('chemAvg Complete'));
-          }
+        let temp = new Chem();
+        temp.name = this.chemnames[name];
+        this.chems.push(temp);
 
-        }, error => {
-          console.log('productUPCDetail.init err' + error);
-        },
-        () => console.log('productUPCDetail Complete'));
+        this.chemSearchService.chemAvg(this.chemnames[name])
+          .subscribe(data => {
+              this.chem = data;
+              this.chems[name] = this.chem;
+            }, error => {
+              console.log('chemAvg.init err' + error);
+            },
+            () => console.log('chemAvg Complete'));
+      }
+    }else{
 
+      this.productSearchService.productUPCDetail(this.navParams.get('upc'))
+        .subscribe(data => {
+            console.log("get in product detail by upc : after barcode scan and result is only one");
+            this.product = data;
+
+            this.chemnames = this.product.components.split(" ");
+
+            for (let name in this.chemnames) {
+
+              let temp = new Chem();
+              temp.name = this.chemnames[name];
+              this.chems.push(temp);
+
+              this.chemSearchService.chemAvg(this.chemnames[name])
+                .subscribe(data => {
+                    this.chem = data;
+                    this.chems[name] = this.chem;
+                  }, error => {
+                    console.log('chemAvg.init err' + error);
+                  },
+                  () => console.log('chemAvg Complete'));
+            }
+
+          }, error => {
+            console.log('productUPCDetail.init err' + error);
+          },
+          () => console.log('productUPCDetail Complete'));
+
+
+    }
 
     //get in product detail by name : when upc has duplicate
-   /* this.productSearchService.productDetail(this.navParams.get('name'))
-      .subscribe(data => {
-        console.log("get in product detail by name");
-          this.product = data;
-          this.chemnames = this.product.components.split(" ");
+    /* this.productSearchService.productDetail(this.navParams.get('name'))
+     .subscribe(data => {
+     console.log("get in product detail by name");
+     this.product = data;
+     this.chemnames = this.product.components.split(" ");
 
-          for (let name in this.chemnames) {
+     for (let name in this.chemnames) {
 
-            let temp = new Chem();
-            temp.name = this.chemnames[name];
-            this.chems.push(temp);
+     let temp = new Chem();
+     temp.name = this.chemnames[name];
+     this.chems.push(temp);
 
-            this.chemSearchService.chemAvg(this.chemnames[name])
-              .subscribe(data => {
-                  this.chem = data;
-                  this.chems[name] = this.chem;
-                }, error => {
-                  console.log('chemAvg.init err' + error);
-                },
-                () => console.log('chemAvg Complete'));
-          }
+     this.chemSearchService.chemAvg(this.chemnames[name])
+     .subscribe(data => {
+     this.chem = data;
+     this.chems[name] = this.chem;
+     }, error => {
+     console.log('chemAvg.init err' + error);
+     },
+     () => console.log('chemAvg Complete'));
+     }
 
-        }, error => {
-          console.log('productDetail.init err' + error);
-        },
-        () => console.log('productDetail Complete'));*/
-
-    this.product = this.navParams.get('product');
-    console.dir(this.product);
-    this.chemnames = this.product.components.split(" ");
-
-    for (let name in this.chemnames) {
-
-      let temp = new Chem();
-      temp.name = this.chemnames[name];
-      this.chems.push(temp);
-
-      this.chemSearchService.chemAvg(this.chemnames[name])
-        .subscribe(data => {
-            this.chem = data;
-            this.chems[name] = this.chem;
-          }, error => {
-            console.log('chemAvg.init err' + error);
-          },
-          () => console.log('chemAvg Complete'));
-    }
+     }, error => {
+     console.log('productDetail.init err' + error);
+     },
+     () => console.log('productDetail Complete'));*/
 
   }
 

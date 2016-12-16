@@ -31,10 +31,14 @@
         <icon density="xhdpi" src="resources\android\icon\drawable-xhdpi-icon.png" />
         <icon density="xxhdpi" src="resources\android\icon\drawable-xxhdpi-icon.png" />
         <icon density="xxxhdpi" src="resources\android\icon\drawable-xxxhdpi-icon.png" />
+      <resource-file src="www/targets/EasySafeDB.xml" target="assets/EasySafeDB.xml" />
+      <resource-file src="www/targets/EasySafeDB.dat" target="assets/EasySafeDB.dat" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+      <resource-file src="targets/EasySafeDB.xml" />
+      <resource-file src="targets/EasySafeDB.dat" />
     </platform>
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />

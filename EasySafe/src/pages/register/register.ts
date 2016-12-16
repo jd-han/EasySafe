@@ -37,7 +37,7 @@ export class RegisterPage {
 
 
     this.registerForm = new FormGroup({
-      uid: new FormControl('', [Validators.maxLength(30), Validators.minLength(6), Validators.pattern('[a-zA-Z ]*'), Validators.required]),
+      uid: new FormControl('', [Validators.maxLength(30), Validators.minLength(6), Validators.pattern('[a-zA-Z0-9]*'), Validators.required]),
       uname: new FormControl('', [Validators.maxLength(30), Validators.minLength(6), Validators.required]),
       umail: new FormControl('', [Validators.maxLength(30), Validators.minLength(6), ValidationService.emailValidator, Validators.required]),
       upw: new FormControl('', [Validators.maxLength(30), Validators.required, ValidationService.passwordValidator]),
@@ -74,8 +74,22 @@ export class RegisterPage {
     return rv;
   }
 
+/*
+  //벨리데이션용 패스워드 체크
+  static check(rp: RegisterPage): {[err: string]: any} {
+    let idCheck = rp.idFlag;
+    let mailCheck = rp.mailFlag;
+    let rv: any = {};
+    if (!idCheck && !mailCheck) {
+      rv.check = true;
+    }
+    return rv;
+  }
+*/
 
-  //true 이면 존재하는 아이디
+
+  //false 이면 존재하는 아이디
+  // static idChecked : boolean = false;
   idFlag: boolean = false;
 
   idCheck() {
@@ -84,9 +98,10 @@ export class RegisterPage {
         data => {
           console.log("register idCheck : " + data);
           console.dir(this.idFlag);
-         this.idFlag = data;
+         this.idFlag = !data;
           console.log("after this.idFlag = data : this.idFlag is " + this.idFlag);
           console.dir(this.idFlag);
+          // RegisterPage.idChecked = this.idFlag;
         },
         err => {
           console.log(err);
@@ -101,7 +116,7 @@ export class RegisterPage {
   showIdAlert() {
     let confirm = this.alertCtrl.create({
       title: '이메일 중복 체크',
-      message: this.idFlag ? '존재하는 아이디입니다' : '사용 가능한 아이디입니다.',
+      message: this.idFlag ? '사용 가능한 아이디입니다.' : '존재하는 아이디입니다' ,
       cssClass: 'alertCheck',
       buttons: [
         {
@@ -115,6 +130,8 @@ export class RegisterPage {
     confirm.present();
   }
 
+  // static mailChecked : boolean = false;
+  // false이면 있는 이메일
   mailFlag : boolean = false;
 
   mailCheck() {
@@ -123,9 +140,10 @@ export class RegisterPage {
         data => {
           console.log("register idCheck : " + data);
           console.dir(this.mailFlag);
-          this.mailFlag = data;
+          this.mailFlag = !data;
           console.log("after this.idFlag = data : this.idFlag is " + this.mailFlag);
           console.dir(this.mailFlag);
+          // RegisterPage.mailChecked = this.mailFlag;
         },
         err => {
           console.log(err);
@@ -140,7 +158,7 @@ export class RegisterPage {
   showMailAlert() {
     let confirm = this.alertCtrl.create({
       title: '이메일 중복 체크',
-      message: this.mailFlag ? '존재하는 메일입니다' : '사용 가능한 메일입니다.',
+      message: this.mailFlag ? '사용 가능한 메일입니다.':'존재하는 메일입니다',
       cssClass: 'alertCheck',
       buttons: [
         {
@@ -156,6 +174,17 @@ export class RegisterPage {
 
 
   register(fromgroup: FormGroup) {
+    console.log("this.idFlag : " + this.idFlag);
+    console.log("this.mailFlag : " + this.mailFlag);
+    if(!this.idFlag){
+      alert("Please check your Id");
+      return
+    }
+    if(!this.mailFlag){
+      alert("Please check your mail address");
+      return
+    }
+
     let user = {
       uid: fromgroup.controls['uid'].value,
       uname: fromgroup.controls['uname'].value,
@@ -183,6 +212,5 @@ export class RegisterPage {
   dismiss() {
     this.viewCtrl.dismiss();
   }
-
 
 }

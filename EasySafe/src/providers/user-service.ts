@@ -23,7 +23,7 @@ export class UserService {
     public http: Http,
     public events: Events,
   ) {
-    // this.url = 'http://192.168.0.7:8000/appuser';
+    // this.baseUrl = 'http://192.168.0.7:8000/appuser';
     this.baseUrl = 'http://www.easysafe.info/appuser';
 
     this.headers = new Headers();
